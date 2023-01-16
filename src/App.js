@@ -19,11 +19,18 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
 
+  // start a new game automatically
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({...card, id: Math.random()}) )
 
+    setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
   }
@@ -77,6 +84,7 @@ function App() {
           />
         )}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
