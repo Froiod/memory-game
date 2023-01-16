@@ -53,7 +53,6 @@ function App() {
     }
   }, [choiceOne, choiceTwo])
 
-  console.log(cards)
 
   // reset chioces & increase turn
   const resetTurn = () => {
@@ -71,6 +70,7 @@ function App() {
             card={card} 
             key={card.id}
             handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
           />
         )}
       </div>
